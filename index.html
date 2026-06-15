@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetitionIQ — Coming Soon</title>
+    <meta
+      name="description"
+      content="Immigration Intelligence Before the Petition Is Written. AI-powered evaluation for EB-1A, EB-2 NIW, and O-1A. Launching soon."
+    />
+    <meta name="robots" content="index, follow" />  
+    <meta name="color-scheme" content="light" />
+    <meta property="og:title" content="PetitionIQ — Coming Soon" />
+    <meta
+      property="og:description"
+      content="Immigration Intelligence Before the Petition Is Written. Launching soon."
+    />
+    <meta property="og:image" content="https://petitioniq.ai/og-image.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap&family=Inter:wght@300;400;500;600&display=swap&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ivory: #fafaf7;
+        --white: #ffffff;
+        --navy: #0f2a4f;
+        --navy-2: #081832;
+        --gold: #c59c38;
+        --amber: #b8830a;
+        --text: #1c1c1e;
+        --muted: #6b7280;
+        --border: #e5e3dc;
+        color-scheme: light only;
+      }
+
+      /* Force light mode regardless of OS preference */
+      html {
+        background-color: #fafaf7 !important;
+        color-scheme: light;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: 16px;
+        color: var(--text);
+        background: var(--ivory);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── LAYOUT ── */
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── TOP BAR ── */
+      .top-bar {
+        padding: 28px 48px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--navy);
+        letter-spacing: 0.02em;
+        text-rendering: optimizeLegibility;
+      }
+      .logo em {
+        font-style: italic;
+        font-weight: 300;
+        color: var(--amber);
+      }
+
+      .top-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .top-link {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: color 0.15s;
+      }
+      .top-link:hover {
+        color: var(--text);
+      }
+
+      /* ── GOLD RULE ── */
+      .gold-rule {
+        height: 3px;
+        background: var(--gold);
+        margin-top: 28px;
+      }
+
+      /* ── MAIN ── */
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 72px 24px;
+        text-align: center;
+        position: relative;
+        /* Grid texture scoped to main area only — matches hero on main page */
+        background-image:
+          linear-gradient(rgba(15, 42, 79, 0.028) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(15, 42, 79, 0.028) 1px, transparent 1px);
+        background-size: 52px 52px;
+      }
+
+      /* Watermark */
+      .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: clamp(100px, 20vw, 220px);
+        font-weight: 300;
+        color: var(--navy);
+        opacity: 0.03;
+        line-height: 1;
+        pointer-events: none;
+        white-space: nowrap;
+        user-select: none;
+        z-index: 0;
+        letter-spacing: -0.02em;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        width: 100%;
+      }
+
+      /* Kicker */
+      .kicker {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--amber);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .kicker::before,
+      .kicker::after {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 1.5px;
+        background: var(--amber);
+      }
+
+      /* Headline */
+      .headline {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: clamp(38px, 6.5vw, 80px);
+        font-weight: 400;
+        line-height: 1.07;
+        letter-spacing: -0.02em;
+        color: var(--navy);
+        margin-bottom: 10px;
+      }
+      .headline em {
+        font-style: italic;
+        font-weight: 300;
+        /* Gold double underline — the brand signature */
+        text-decoration: underline double var(--gold);
+        text-underline-offset: 8px;
+        text-decoration-thickness: 2px;
+      }
+
+      /* Sub */
+      .sub {
+        font-size: clamp(15px, 2vw, 18px);
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.75;
+        max-width: 500px;
+        margin: 0 auto 16px;
+      }
+
+      /* Emotional line */
+      .emotional {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: clamp(16px, 2.2vw, 20px);
+        font-weight: 400;
+        font-style: italic;
+        color: var(--text);
+        max-width: 480px;
+        margin: 0 auto 40px;
+        line-height: 1.6;
+      }
+
+      /* Visa tags */
+      .visa-tags {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 44px;
+        flex-wrap: wrap;
+      }
+      .visa-tag {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--navy);
+        border: 1.5px solid var(--border);
+        border-radius: 100px;
+        padding: 6px 16px;
+        background: var(--white);
+      }
+      .visa-sep {
+        font-size: 14px;
+        color: var(--border);
+      }
+
+      /* Email capture */
+      .capture-wrap {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .capture-label {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+      .capture-row {
+        display: flex;
+        gap: 8px;
+        align-items: stretch;
+      }
+      .capture-input {
+        flex: 1;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: 14px;
+        border: 1.5px solid var(--border);
+        border-radius: 100px;
+        padding: 0 18px;
+        height: 48px;
+        color: var(--text);
+        background: var(--white);
+        outline: none;
+        transition:
+          border-color 0.18s,
+          box-shadow 0.18s;
+        min-width: 0;
+      }
+      .capture-input:focus {
+        border-color: var(--navy);
+        box-shadow: 0 0 0 3px rgba(15, 42, 79, 0.07);
+      }
+      .capture-input::placeholder {
+        color: var(--muted);
+      }
+      .capture-btn {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        background: var(--navy);
+        color: var(--white);
+        border: none;
+        border-radius: 100px;
+        padding: 0 24px;
+        height: 48px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition:
+          background 0.18s,
+          transform 0.15s;
+      }
+      .capture-btn:hover {
+        background: var(--navy-2);
+        transform: translateY(-1px);
+      }
+      .capture-btn:disabled {
+        opacity: 0.5;
+        cursor: default;
+        transform: none;
+      }
+      .capture-note {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 10px;
+        line-height: 1.55;
+        font-style: italic;
+      }
+      .capture-ok {
+        display: none;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--navy);
+        padding: 14px 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .capture-ok::before {
+        content: "✓";
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--gold);
+        color: var(--navy);
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      /* ── FEATURES STRIP ── */
+      .features {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0;
+        margin-top: 56px;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .feat {
+        flex: 1;
+        min-width: 160px;
+        max-width: 200px;
+        padding: 0 24px;
+        border-right: 1px solid var(--border);
+        text-align: center;
+      }
+      .feat:last-child {
+        border-right: none;
+      }
+      .feat-num {
+        font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+        font-size: 32px;
+        font-weight: 400;
+        color: var(--navy);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .feat-num sup {
+        font-size: 0.45em;
+        color: var(--amber);
+      }
+      .feat-label {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      /* ── FOOTER ── */
+      .footer {
+        padding: 20px 48px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-top: 1px solid var(--border);
+      }
+      .footer-left {
+        font-size: 10px;
+        font-style: italic;
+        color: var(--muted);
+        line-height: 1.65;
+        max-width: 440px;
+      }
+      .footer-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .footer-link {
+        font-size: 12px;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .footer-link:hover {
+        color: var(--text);
+      }
+      .footer-linkedin {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--navy);
+        border: 1.5px solid var(--navy);
+        border-radius: 100px;
+        padding: 6px 16px;
+        text-decoration: none;
+        transition: all 0.15s;
+      }
+      .footer-linkedin:hover {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      /* ── ERROR STATE ── */
+      .field-error {
+        border-color: #dc2626 !important;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 600px) {
+        .top-bar {
+          padding: 20px 24px 0;
+        }
+        .top-links {
+          display: none;
+        }
+        .main {
+          padding: 52px 20px;
+        }
+        .capture-row {
+          flex-direction: column;
+        }
+        .capture-input {
+          border-radius: 8px;
+        }
+        .capture-btn {
+          border-radius: 8px;
+          width: 100%;
+        }
+        .features {
+          gap: 20px;
+          padding-top: 32px;
+          margin-top: 40px;
+        }
+        .feat {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          padding: 0 0 20px;
+          max-width: 100%;
+          min-width: unset;
+          width: 100%;
+        }
+        .feat:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .footer {
+          padding: 20px 24px;
+        }
+        .footer-left {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- TOP -->
+      <div class="top-bar">
+        <div class="logo">PetitionIQ<em>.ai</em></div>
+        <div class="top-links">
+          <a href="mailto:contact@petitioniq.ai" class="top-link"
+            >contact@petitioniq.ai</a
+          >
+          <a
+            href="https://www.linkedin.com/company/petitioniq"
+            target="_blank"
+            rel="noopener"
+            class="top-link"
+            >LinkedIn →</a
+          >
+        </div>
+      </div>
+      <div class="gold-rule"></div>
+
+      <!-- MAIN -->
+      <main class="main">
+        <div class="watermark" aria-hidden="true">IQ</div>
+
+        <div class="content">
+          <p class="kicker">Launching soon</p>
+
+          <h1 class="headline">
+            Immigration Intelligence<br />
+            <em>Before the Petition</em><br />
+            Is Written.
+          </h1>
+
+          <p class="sub">
+            AI-powered evaluation for EB-1A, EB-2 NIW, and O-1A. Know where you
+            stand before investing in legal fees.
+          </p>
+
+          <p class="emotional">
+            Most professionals spend months preparing petitions without knowing
+            whether their profile is truly competitive. PetitionIQ provides
+            clarity before that process begins.
+          </p>
+
+          <div class="visa-tags">
+            <span class="visa-tag">EB-1A</span>
+            <span class="visa-sep">·</span>
+            <span class="visa-tag">EB-2 NIW</span>
+            <span class="visa-sep">·</span>
+            <span class="visa-tag">O-1A</span>
+          </div>
+
+          <!-- Email capture -->
+          <div class="capture-wrap">
+            <p class="capture-label">
+              We will send you one email when we launch. No newsletter. No
+              follow-up unless you reach out.
+            </p>
+            <div class="capture-row" id="capture-row">
+              <input
+                type="email"
+                class="capture-input"
+                id="capture-email"
+                placeholder="your@email.com"
+                autocomplete="email"
+                maxlength="120"
+                onkeydown="if (event.key === 'Enter') submitCapture();"
+              />
+              <button
+                class="capture-btn"
+                id="capture-btn"
+                onclick="submitCapture()"
+              >
+                Get launch notification →
+              </button>
+            </div>
+            <div class="capture-ok" id="capture-ok">
+              Confirmed — one email when we launch. Nothing else.
+            </div>
+            <p class="capture-note">
+              One email only on launch day. No newsletter. PetitionIQ is not a
+              law firm.
+            </p>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="features">
+            <div class="feat">
+              <div class="feat-num">3</div>
+              <div class="feat-label">Visa categories at launch</div>
+            </div>
+            <div class="feat">
+              <div class="feat-num">10<sup>+</sup></div>
+              <div class="feat-label">
+                Years of practitioner experience built into the framework
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-num">Free</div>
+              <div class="feat-label">
+                Stage A AI evaluation — no card, no attorney required
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-num">0</div>
+              <div class="feat-label">
+                Cases where pre-filing analysis is optional
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <p class="footer-left">
+          PetitionIQ is not a law firm and does not provide legal advice. Use
+          does not create an attorney-client relationship. Consult a licensed
+          immigration attorney for advice specific to your case. © 2026
+          PetitionIQ.
+        </p>
+        <div class="footer-right">
+          <a href="mailto:contact@petitioniq.ai" class="footer-link"
+            >contact@petitioniq.ai</a
+          >
+          <a
+            href="https://www.linkedin.com/company/petitioniq"
+            target="_blank"
+            rel="noopener"
+            class="footer-linkedin"
+            >Follow on LinkedIn</a
+          >
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      async function submitCapture() {
+        const input = document.getElementById("capture-email");
+        const btn = document.getElementById("capture-btn");
+        const email = input.value.trim();
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          input.classList.add("field-error");
+          input.focus();
+          setTimeout(() => input.classList.remove("field-error"), 2000);
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+
+        try {
+          await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              type: "launch_notify",
+              email,
+              timestamp: new Date().toISOString(),
+            }),
+          });
+        } catch (e) {
+          // Fail silently — lead still visible in server log
+        }
+
+        document.getElementById("capture-row").style.display = "none";
+        const ok = document.getElementById("capture-ok");
+        ok.style.display = "flex";
+      }
+    </script>
+  </body>
+</html>
